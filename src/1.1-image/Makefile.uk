@@ -1,0 +1,4 @@
+$(eval $(call addlib,app11))
+
+APP11_SRCS-y += $(wildcard $(APP11_BASE)/src/*.cpp) $(wildcard $(APP11_BASE)/src/ports/cpu/*.cpp) $(wildcard $(APP11_BASE)/common/*.cpp)
+APP11_CXXINCLUDES += -I$(APP11_BASE)/include -I$(APP11_BASE)/common

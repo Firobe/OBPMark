@@ -1,0 +1,36 @@
+spec: v0.6
+
+name: image
+
+unikraft:
+  version: staging
+  kconfig:
+    CONFIG_LIBUKBUS: 'y'
+    CONFIG_LIBPOSIX_FDIO: 'y'
+    CONFIG_LIBUKNETDEV_EINFO_LIBPARAM: 'y'
+    CONFIG_LIBUKINTCTLR_GICV3: 'y'
+    CONFIG_LIBRAMFS: 'y'
+    CONFIG_LIBUK9P: 'y'
+    CONFIG_LIB9PFS: 'y'
+    CONFIG_LIBVFSCORE_AUTOMOUNT_UP: 'y'
+    CONFIG_LIBVFSCORE_AUTOMOUNT: 'y'
+    CONFIG_LIBVFSCORE: 'y'
+
+targets:
+- platform: qemu
+  arch: x86_64
+- platform: qemu
+  arch: arm64
+  kconfig:
+    CONFIG_MCPU_ARM64_GENERIC: 'y'
+    CONFIG_LIBUKRANDOM_LCPU: 'n'
+
+libraries:
+  musl: stable
+  libcxxabi: stable
+  libcxx: stable
+  libunwind: stable
+  compiler-rt:
+    version: stable
+    kconfig:
+      CONFIG_LIBCOMPILER_RT: 'y'
